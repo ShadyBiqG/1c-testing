@@ -43,7 +43,7 @@ run_module_tests
 
 `run_module_tests` сам использует build prerequisite (`BuildFirst`). Отдельный `build_project` перед каждым тестом не нужен.
 
-Если нужен полный отчёт/режим полного прогона для модуля:
+Если нужен полный отчёт по прогону модуля (это не полная пересборка):
 
 ```text
 run_module_tests
