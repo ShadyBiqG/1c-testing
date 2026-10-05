@@ -51,3 +51,17 @@
 ## 114 и 115
 
 Skill должен оставаться одинаковым. Не зашивай в него `ТестыУТ114`, `ТестыУТ115`, путь базы, путь `v8project.yaml` или версию конфигурации. Эти значения читаются из `v8project.yaml`, структуры проекта и project-local `.codex/config.toml`.
+
+## Опциональная интеграция с Superpowers
+
+Superpowers не является зависимостью `1c-testing` и может отсутствовать.
+
+Если он установлен:
+
+- Superpowers владеет orchestration, decomposition, subagents/worktrees и review;
+- `ai_rules_1c` остаётся источником профессиональных правил разработки 1С;
+- `1c-testing` владеет выбором test type, breadth L1–L4, risk profile и Definition of Done тестирования;
+- generic TDD Superpowers не требует создавать новый unit-тест для каждой небольшой BSL-правки: применяется проектная стратегия `1c-testing`;
+- отчёт Worker/Reviewer не является PASS — финальный verdict дают реальные runtime-инструменты.
+
+Не добавляй в `1c-testing` собственный lifecycle/оркестратор ради совместимости с Superpowers.

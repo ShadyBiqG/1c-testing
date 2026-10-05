@@ -1,6 +1,6 @@
 # Источники и принятые решения
 
-Пакет подготовлен 10.09.2026. Обновление 1.4: v8-runner-first цикл Vanessa и quality gate.
+Пакет подготовлен 10.09.2026. Обновление 1.5: runtime-aware testing, QA/TestClient и разделение breadth/risk.
 
 ## comol/ai_rules_1c
 
@@ -60,3 +60,21 @@
 Решение: выполнение и повторная проверка `.feature` всегда идут через `v8_runner`. Vanessa MCP не является runner и используется только точечно для поиска неизвестного шага, проверки неоднозначного синтаксиса или инспекции конкретного элемента формы после доказанного падения.
 
 Руководство skill отдельно фиксирует требования к бизнес-проверкам, независимости данных, устойчивым локаторам, ожиданиям вместо фиксированных пауз и подтверждению фактического выполнения. Учебные примеры `va-ai` не считаются стандартом архитектуры сценариев.
+
+## SteelMorgan/1c-agent-based-dev-framework — methodological reference
+
+- https://github.com/SteelMorgan/1c-agent-based-dev-framework
+- `framework/workflows/full-cycle/SKILL.md`
+- `framework/rules/tdd-policy/SKILL.md`
+- `framework/rules/vanessa-scenario-policy/SKILL.md`
+- `framework/rules/vanessa-test-isolation-policy/SKILL.md`
+- `framework/subagents/developer-tests.md`
+- `framework/subagents/tester.md`
+
+Использованные методические идеи: разделение runtime-слоёв тестирования, distinction unit/integration, проверка пользовательского контекста прав/RLS, исследование фактического UI перед новым Vanessa-сценарием и классификация падения теста до изменения production-кода.
+
+Код, тексты prompts/rules и структура SteelMorgan не копировались. Репозиторий использует PolyForm Small Business License 1.0.0; этот пакет сохраняет собственные формулировки и архитектуру.
+
+## OneRPA QA MCP / TestClient
+
+Решение: QA/TestClient используется как быстрый developer runtime/UI smoke и для подтверждения фактического контракта формы. Vanessa остаётся слоем сохраняемых acceptance/regression/E2E-сценариев. Точные tool names и execution semantics принадлежат установленному `ai_rules_1c`/OneRPA tooling и не дублируются здесь.
